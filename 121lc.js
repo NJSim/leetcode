@@ -40,6 +40,44 @@ let testOutput = function(testPrices, expectedOutput){
     return max_profit
 };
 
+//more efficient way
+//Explanation of efficient solution
+/*
+
+We are always holding the maxprofit which can be made and changing
+it depending on where we are in the iteration.
+
+Start of the forloop we check if the first int is less than
+infinity if so we want that number to be our lowest number
+
+In the next iteration of our array, if the int is lower then we
+have a new lowest number to keep track of
+
+OR
+
+If the next iteration of our array is a greater int then we want
+to see if the we have a greater profit. We check this by
+seeing if 'The current number subtracted by our current minimum price'
+has a LARGER profit than what we stored in maxProfit.
+If true then max profit is 'The current number subtracted by our current minimum price'
+
+*/
+let maxProfit2 = function(prices) {
+    let minPrice = Infinity;
+    let maxProfit = 0;
+
+    for (let i = 0; i < prices.length; i++){
+        if (prices[i] < minPrice){
+            minPrice = prices[i];
+        }
+        else if ((prices[i] - minPrice) > maxProfit){
+            maxProfit = prices[i] - minPrice
+        }
+    }
+    return maxProfit
+
+}
+
 let testPrices1 = [7,1,4,3,6,4]
 let testOutput1 = 5 //buy at 1 sell at 6
 
